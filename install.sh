@@ -1,73 +1,81 @@
 #!/bin/bash
 
-# --- Цвета для вывода ---
 GREEN="\e[32m"
 YELLOW="\e[33m"
 RED="\e[31m"
 RESET="\e[0m"
 
-# --- Проверка на root ---
 if [ "$EUID" -eq 0 ]; then
-  echo -e "${RED}Не запускай от root. Используй обычного пользователя с sudo.${RESET}"
+  echo -e "${RED}Do not run as root. Use a regular user with sudo.${RESET}"
   exit 1
 fi
 
-echo -e "${YELLOW}==> Установка необходимых пакетов...${RESET}"
+echo -e "${YELLOW}==> Installing required packages...${RESET}"
 
-# --- Установка пакетов ---
 sudo pacman -Syu --needed --noconfirm \
-  bspwm sxhkd polybar rofi xorg-xinit xorg-server ttf-jetbrains-mono-nerd
+  bspwm sxhkd polybar rofi xorg-xinit xorg-server ttf-jetbrains-mono-nerd alacritty discord firefox telegram-desktop ranger feh picom dolphin dolphin-plugins \
+  breeze-icons breeze gtk3 gtk4 dunst
 
 if [ $? -ne 0 ]; then
-  echo -e "${RED}Ошибка при установке пакетов.${RESET}"
+  echo -e "${RED}Package installation failed.${RESET}"
   exit 1
 fi
 
-echo -e "${GREEN}Пакеты успешно установлены.${RESET}"
+echo -e "${GREEN}Packages installed successfully.${RESET}"
 
-# --- Пути ---
-SRC_DIR="$(pwd)/configs"
+SRC_DIR="$(pwd)/config"
 DEST_DIR="$HOME/.config"
 
-# --- Проверка наличия configs ---
 if [ ! -d "$SRC_DIR" ]; then
-  echo -e "${RED}Папка configs не найдена. Запусти скрипт из корня проекта, где есть папка configs.${RESET}"
+  echo -e "${RED}Config folder not found. Run the script from the project root where the config folder exists.${RESET}"
   exit 1
 fi
 
-# --- Копирование конфигов ---
-echo -e "${YELLOW}==> Копирование конфигов в ~/.config...${RESET}"
+echo -e "${YELLOW}==> Copying configuration to ~/.config...${RESET}"
 
 mkdir -p "$DEST_DIR"
 
-for dir in bspwm sxhkd polybar rofi; do
-  if [ -d "$SRC_DIR/$dir" ]; then
-    mkdir -p "$DEST_DIR/$dir"
-    cp -r "$SRC_DIR/$dir"/* "$DEST_DIR/$dir/"
-    echo -e "${GREEN}✔ $dir скопирован.${RESET}"
-  else
-    echo -e "${YELLOW}⚠ Папка $dir не найдена в configs.${RESET}"
-  fi
-done
+if [ -d "$SRC_DIR" ]; then
+  cp -r "$SRC_DIR"/* "$DEST_DIR/" 2>/dev/null
+  echo -e "${GREEN}✔ All configuration copied to ~/.config${RESET}"
+  echo -e "${YELLOW}Copied folders:${RESET}"
+  for dir in "$SRC_DIR"/*; do
+    if [ -d "$dir" ]; then
+      dir_name=$(basename "$dir")
+      echo -e "${GREEN}  ✔ $dir_name${RESET}"
+    fi
+  done
+else
+  echo -e "${RED}Error: config folder not found${RESET}"
+  exit 1
+fi
 
-# --- Копирование xinitrc и Xresources ---
-if [ -f "$SRC_DIR/xinitrc" ]; then
-  cp "$SRC_DIR/xinitrc" "$HOME/.xinitrc"
+if [ -f "$(pwd)/xinitrc" ]; then
+  cp "$(pwd)/xinitrc" "$HOME/.xinitrc"
   echo -e "${GREEN}✔ xinitrc → ~/.xinitrc${RESET}"
 else
-  echo -e "${YELLOW}⚠ xinitrc не найден.${RESET}"
+  echo -e "${YELLOW}⚠ xinitrc not found in the project root.${RESET}"
 fi
 
-if [ -f "$SRC_DIR/Xresources" ]; then
-  cp "$SRC_DIR/Xresources" "$HOME/.Xresources"
+if [ -f "$(pwd)/Xresources" ]; then
+  cp "$(pwd)/Xresources" "$HOME/.Xresources"
   echo -e "${GREEN}✔ Xresources → ~/.Xresources${RESET}"
 else
-  echo -e "${YELLOW}⚠ Xresources не найден.${RESET}"
+  echo -e "${YELLOW}⚠ Xresources not found in the project root.${RESET}"
 fi
 
-# --- Права на скрипты bspwm и sxhkd ---
-chmod +x "$DEST_DIR/bspwm/"* 2>/dev/null
-chmod +x "$DEST_DIR/sxhkd/"* 2>/dev/null
+if [ -d "$(pwd)/Wallpapers" ]; then
+  mkdir -p "$HOME/Wallpapers"
+  cp -r "$(pwd)/Wallpapers"/* "$HOME/Wallpapers/" 2>/dev/null
+  echo -e "${GREEN}✔ Wallpapers copied${RESET}"
+else
+  echo -e "${YELLOW}⚠ Wallpapers folder not found.${RESET}"
+fi
 
-echo -e "${GREEN}==> Установка завершена успешно!${RESET}"
-echo -e "${YELLOW}Теперь можешь запустить: startx${RESET}"
+find "$DEST_DIR/bspwm" -type f -exec chmod +x {} \; 2>/dev/null
+find "$DEST_DIR/sxhkd" -type f -exec chmod +x {} \; 2>/dev/null
+
+echo -e "${GREEN}✔ Execution permissions set for bspwm and sxhkd${RESET}"
+
+echo -e "${GREEN}==> Installation completed successfully!${RESET}"
+echo -e "${YELLOW}You can now run: startx${RESET}"
