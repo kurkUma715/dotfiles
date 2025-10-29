@@ -1,35 +1,22 @@
-# Перезагрузка и завершение
 super + Escape
     bspc wm -r
 
 super + r
-    pkill -USR1 -x sxhkd
+    pkill -USR1 -x shkd
 
 super + shift + Escape
     bspc quit
 
-shift + alt
-	~/.config/sxhkd/language.sh
-
 super + comma
     bspc desktop -f prev
+
 super + period
     bspc desktop -f next
 
-# Перемещать курсор
-super + {Left,Down,Up,Right}
-    xdotool mousemove_relative -- {-20,0,0,20} {0,20,-20,0}
-
-# Клик
-super + shift + {Left,Right,Up,Down}
-    xdotool click {1,3,4,5}
-
-# Переключение темы
-   
+# Restart polybar 
 super + F10
     ~/.config/polybar/launch.sh
 
-# Базовая навигация как в GNOME
 super + Return
     alacritty
 
@@ -91,11 +78,9 @@ super + shift + {h,j,k,l}
 super + ctrl + {h,j,k,l}
     bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
-# Полноэкранный режим
 super + F11
     bspc node -t fullscreen
 
-# Управление звуком
 XF86AudioMute
     pactl set-sink-mute @DEFAULT_SINK@ toggle
 
@@ -105,14 +90,12 @@ XF86AudioLowerVolume
 XF86AudioRaiseVolume
     pactl set-sink-volume @DEFAULT_SINK@ +5%
 
-# Яркость экрана
 XF86MonBrightnessUp
     brightnessctl set +5%
 
 XF86MonBrightnessDown
     brightnessctl set 5%-
 
-# Скриншоты
 super + Print
     mkdir -p ~/Pictures/Screenshots/ && \
     scrot -b ~/Pictures/Screenshots/'%Y-%m-%d-%H%M%S_$wx$h.png'
