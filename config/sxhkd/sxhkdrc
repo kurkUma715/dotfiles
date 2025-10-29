@@ -1,0 +1,125 @@
+# Перезагрузка и завершение
+super + Escape
+    bspc wm -r
+
+super + r
+    pkill -USR1 -x sxhkd
+
+super + shift + Escape
+    bspc quit
+
+shift + alt
+	~/.config/sxhkd/language.sh
+
+super + comma
+    bspc desktop -f prev
+super + period
+    bspc desktop -f next
+
+# Перемещать курсор
+super + {Left,Down,Up,Right}
+    xdotool mousemove_relative -- {-20,0,0,20} {0,20,-20,0}
+
+# Клик
+super + shift + {Left,Right,Up,Down}
+    xdotool click {1,3,4,5}
+
+# Переключение темы
+   
+super + F10
+    ~/.config/polybar/launch.sh
+
+# Базовая навигация как в GNOME
+super + Return
+    alacritty
+
+super + shift + w
+    firefox
+
+super + shift + d
+    discord
+
+super + shift + u
+    unityhub
+
+super + shift + c
+    code
+
+super + shift + e
+    alacritty -e ranger
+
+# Управление окнами
+super + q
+    bspc node -c
+
+super + m
+    bspc node -t floating
+
+super + shift + m
+    bspc node -t tiled
+
+# Переключение окон (Alt+Tab)
+alt + Tab
+    bspc node -f next.local
+
+alt + shift + Tab
+    bspc node -f prev.local
+
+# Перемещение между рабочими столами
+super + {1-9,0}
+    bspc desktop -f ^{1-9,10}
+
+super + shift + {1-9,0}
+    bspc node -d ^{1-9,10}
+
+# Разделение окон
+super + h
+    bspc node -p west
+
+super + j
+    bspc node -p south
+
+super + k
+    bspc node -p north
+
+super + l
+    bspc node -p east
+
+super + shift + {h,j,k,l}
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+super + ctrl + {h,j,k,l}
+    bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# Полноэкранный режим
+super + F11
+    bspc node -t fullscreen
+
+# Управление звуком
+XF86AudioMute
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+XF86AudioLowerVolume
+    pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+XF86AudioRaiseVolume
+    pactl set-sink-volume @DEFAULT_SINK@ +5%
+
+# Яркость экрана
+XF86MonBrightnessUp
+    brightnessctl set +5%
+
+XF86MonBrightnessDown
+    brightnessctl set 5%-
+
+# Скриншоты
+super + Print
+    mkdir -p ~/Pictures/Screenshots/ && \
+    scrot -b ~/Pictures/Screenshots/'%Y-%m-%d-%H%M%S_$wx$h.png'
+
+super + shift + s
+    mkdir -p ~/Pictures/Screenshots/ && \
+    scrot -s -b ~/Pictures/Screenshots/'%Y-%m-%d-%H%M%S_$wx$h.png'
+# Меню приложений
+super + d
+    rofi -show drun
