@@ -20,15 +20,10 @@ bspc config presel_feedback_color "#000000"
 bspc rule -a feh state=floating
 bspc rule -a yandex-music state=floating
 
-xrdb merge ~/.Xresources
-
-~/.config/bspwm/w.sh &
-~/.config/polybar/launch.sh &
-
 /usr/lib/xdg-desktop-portal &
 /usr/lib/xdg-desktop-portal-gtk &
 
-sxhkd &
-setxkbmap -layout US, RU -variant , -option grp:alt_shift_toggle &
+~/.config/screenlayout.sh &
+~/.config/polybar/launch.sh &
+
 feh --bg-fill ~/Wallpapers/9.png &
-picom --config ~/.config/bspwm/picom/picom.conf &

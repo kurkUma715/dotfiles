@@ -16,3 +16,7 @@ style = "Italic"
 [font.normal]
 family = "hack"
 style = "Regular"
+
+[shell]
+program = "/usr/bin/fish"
+args = ["--login"]

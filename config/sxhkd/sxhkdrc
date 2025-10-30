@@ -1,23 +1,28 @@
-super + Escape
+# Main
+super + Escape # Restart BSPWM
     bspc wm -r
 
-super + r
+super + r # Restart Config
     pkill -USR1 -x shkd
 
-super + shift + Escape
+super + shift + Escape # Quit BSPWM
     bspc quit
-
-super + comma
-    bspc desktop -f prev
-
-super + period
-    bspc desktop -f next
 
 # Restart polybar 
 super + F10
     ~/.config/polybar/launch.sh
 
-super + Return
+
+# Desktops movement
+super + comma # Left
+    bspc desktop -f prev
+
+super + period # Right
+    bspc desktop -f next
+
+
+# Apps hotkeys
+super + Return # Terminal
     alacritty
 
 super + shift + w
@@ -35,7 +40,13 @@ super + shift + c
 super + shift + e
     alacritty -e ranger
 
-# Управление окнами
+
+# Apps Menu
+super + d
+    rofi -show drun
+
+
+# Windows Interact
 super + q
     bspc node -c
 
@@ -45,21 +56,22 @@ super + m
 super + shift + m
     bspc node -t tiled
 
-# Переключение окон (Alt+Tab)
+
+# Changing Windows 
 alt + Tab
     bspc node -f next.local
 
 alt + shift + Tab
     bspc node -f prev.local
 
-# Перемещение между рабочими столами
+
 super + {1-9,0}
     bspc desktop -f ^{1-9,10}
 
 super + shift + {1-9,0}
     bspc node -d ^{1-9,10}
 
-# Разделение окон
+# Separate windows
 super + h
     bspc node -p west
 
@@ -81,6 +93,8 @@ super + ctrl + {h,j,k,l}
 super + F11
     bspc node -t fullscreen
 
+
+# Audio
 XF86AudioMute
     pactl set-sink-mute @DEFAULT_SINK@ toggle
 
@@ -90,12 +104,16 @@ XF86AudioLowerVolume
 XF86AudioRaiseVolume
     pactl set-sink-volume @DEFAULT_SINK@ +5%
 
+
+# Brightness
 XF86MonBrightnessUp
     brightnessctl set +5%
 
 XF86MonBrightnessDown
     brightnessctl set 5%-
 
+
+# Screenshot
 super + Print
     mkdir -p ~/Pictures/Screenshots/ && \
     scrot -b ~/Pictures/Screenshots/'%Y-%m-%d-%H%M%S_$wx$h.png'
@@ -103,6 +121,3 @@ super + Print
 super + shift + s
     mkdir -p ~/Pictures/Screenshots/ && \
     scrot -s -b ~/Pictures/Screenshots/'%Y-%m-%d-%H%M%S_$wx$h.png'
-# Меню приложений
-super + d
-    rofi -show drun

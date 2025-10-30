@@ -13,7 +13,7 @@ fi
 echo -e "${YELLOW}==> Installing required packages...${RESET}"
 
 sudo pacman -Syu --needed --noconfirm \
-  bspwm sxhkd polybar rofi xorg-xinit xorg-server ttf-jetbrains-mono-nerd ttf-hack alacritty discord firefox telegram-desktop steam ranger feh picom thunar \
+  bspwm sxhkd polybar rofi xorg-xinit xorg-server ttf-jetbrains-mono-nerd ttf-hack alacritty fish discord firefox telegram-desktop steam ranger feh picom thunar \
   breeze-icons breeze gtk3 gtk4 dunst
 
 if [ $? -ne 0 ]; then
@@ -75,6 +75,8 @@ fi
 find "$DEST_DIR/bspwm" -type f -exec chmod +x {} \; 2>/dev/null
 find "$DEST_DIR/sxhkd" -type f -exec chmod +x {} \; 2>/dev/null
 chmod +x ~/.config/polybar/launch.sh
+
+alacritty migrate
 
 echo -e "${GREEN}✔ Execution permissions set for bspwm and sxhkd${RESET}"
 
