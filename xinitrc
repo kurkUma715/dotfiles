@@ -7,6 +7,5 @@ xsetroot -cursor_name left_ptr
 
 dunst &
 picom --config ~/.config/picom/picom.conf &
-sxhkd &
 
 exec bspwm
