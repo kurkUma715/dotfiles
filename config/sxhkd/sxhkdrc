@@ -1,31 +1,25 @@
 # Main
-
 super + Escape 
     bspc wm -r
 
 super + r
     pkill -USR1 -x sxhkd
 
-super + shift + Escape
-    bspc quit
+super + alt + Delete
+    sh ~/.config/polybar/bin/powermenu
 
 # Restart polybar 
-
 super + F10
     ~/.config/polybar/launch.sh
 
-
 # Desktops movement
-
 super + comma 
     bspc desktop -f prev
 
 super + period 
     bspc desktop -f next
 
-
 # Apps hotkeys
-
 super + Return
     alacritty
 
@@ -42,17 +36,13 @@ super + shift + c
     code
 
 super + shift + e
-    alacritty -e ranger
-
+    alacritty -e ranger ~/
 
 # Apps Menu
-
 super + d
     rofi -show drun
 
-
 # Windows Interact
-
 super + q
     bspc node -c
 
@@ -62,9 +52,7 @@ super + m
 super + shift + m
     bspc node -t tiled
 
-
 # Changing Windows 
-
 alt + Tab
     bspc node -f next.local
 
@@ -79,7 +67,6 @@ super + shift + {1-9,0}
     bspc node -d ^{1-9,10}
 
 # Separate windows
-
 super + h
     bspc node -p west
 
@@ -101,9 +88,7 @@ super + ctrl + {h,j,k,l}
 super + F11
     bspc node -t fullscreen
 
-
 # Audio
-
 XF86AudioMute
     pactl set-sink-mute @DEFAULT_SINK@ toggle
 
@@ -113,18 +98,14 @@ XF86AudioLowerVolume
 XF86AudioRaiseVolume
     pactl set-sink-volume @DEFAULT_SINK@ +5%
 
-
 # Brightness
-
 XF86MonBrightnessUp
     brightnessctl set +5%
 
 XF86MonBrightnessDown
     brightnessctl set 5%-
 
-
 # Screenshot
-
 super + Print
     mkdir -p ~/Pictures/Screenshots/ && \
     scrot -b ~/Pictures/Screenshots/'%Y-%m-%d-%H%M%S_$wx$h.png'
