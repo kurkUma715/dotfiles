@@ -75,6 +75,7 @@ fi
 find "$DEST_DIR/bspwm" -type f -exec chmod +x {} \; 2>/dev/null
 find "$DEST_DIR/sxhkd" -type f -exec chmod +x {} \; 2>/dev/null
 chmod +x ~/.config/polybar/launch.sh
+chmod +x ~/.config/scripts/*.sh
 
 alacritty migrate
 
