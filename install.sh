@@ -36,7 +36,7 @@ echo -e "${YELLOW}==> Copying configuration to ~/.config...${RESET}"
 mkdir -p "$DEST_DIR"
 
 if [ -d "$SRC_DIR" ]; then
-  cp -r "$SRC_DIR"/* "$DEST_DIR/" 2>/dev/null
+  #cp -r "$SRC_DIR"/* "$DEST_DIR/" 2>/dev/null
   echo -e "${GREEN}✔ All configuration copied to ~/.config${RESET}"
   echo -e "${YELLOW}Copied folders:${RESET}"
   for dir in "$SRC_DIR"/*; do
@@ -51,14 +51,14 @@ else
 fi
 
 if [ -f "$(pwd)/xinitrc" ]; then
-  cp "$(pwd)/xinitrc" "$HOME/.xinitrc"
+  #cp "$(pwd)/xinitrc" "$HOME/.xinitrc"
   echo -e "${GREEN}✔ xinitrc → ~/.xinitrc${RESET}"
 else
   echo -e "${YELLOW}⚠ xinitrc not found in the project root.${RESET}"
 fi
 
 if [ -f "$(pwd)/Xresources" ]; then
-  cp "$(pwd)/Xresources" "$HOME/.Xresources"
+  #cp "$(pwd)/Xresources" "$HOME/.Xresources"
   echo -e "${GREEN}✔ Xresources → ~/.Xresources${RESET}"
 else
   echo -e "${YELLOW}⚠ Xresources not found in the project root.${RESET}"
@@ -66,7 +66,7 @@ fi
 
 if [ -d "$(pwd)/Wallpapers" ]; then
   mkdir -p "$HOME/Wallpapers"
-  cp -r "$(pwd)/Wallpapers"/* "$HOME/Wallpapers/" 2>/dev/null
+  #cp -r "$(pwd)/Wallpapers"/* "$HOME/Wallpapers/" 2>/dev/null
   echo -e "${GREEN}✔ Wallpapers copied${RESET}"
 else
   echo -e "${YELLOW}⚠ Wallpapers folder not found.${RESET}"

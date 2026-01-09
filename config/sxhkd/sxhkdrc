@@ -5,7 +5,7 @@ super + Escape
 super + r
     pkill -USR1 -x sxhkd
 
-super + alt + Delete
+ctrl + alt + Delete
     sh ~/.config/polybar/bin/powermenu
 
 # Restart polybar 
@@ -24,6 +24,9 @@ super + Return
     alacritty
 
 super + shift + w
+    chromium
+
+super + shift + f 
     firefox
 
 super + shift + d
@@ -36,7 +39,7 @@ super + shift + c
     code
 
 super + shift + e
-    alacritty -e ranger ~/
+    alacritty -e ranger
 
 # Apps Menu
 super + d

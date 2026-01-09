@@ -4,12 +4,14 @@ bspc monitor DP-0 -d 1 2 3 4 5 6 7 8 9
 bspc monitor HDMI-2 -d 10
 
 bspc config border_width 2
-bspc config window_gap 10
+bspc config window_gap 32
 bspc config split_ratio 0.52
 bspc config presel_feedback false
 bspc config borderless_monocle true
 bspc config gapless_monocle false
 bspc config focus_follows_pointer true
+bspc config top_padding 0
+bspc config bottom_padding 0
 
 bspc config focused_border_color "#ffffff"
 bspc config normal_border_color "#5f5f5f"
@@ -18,8 +20,8 @@ bspc config active_border_color "#5f5f5f"
 bspc config presel_feedback_color "#000000"
 
 bspc rule -a feh state=floating
-bspc rule -a yandex-music state=floating
 bspc rule -a '*:qemu:*' state=floating
+bspc rule -a OpenGL state=floating
 
 ~/.config/scripts/background.sh &
 ~/.config/scripts/settings.sh &

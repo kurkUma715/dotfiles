@@ -1,0 +1,28 @@
+[font]
+size = 15.0
+
+[font.bold]
+family = "hack"
+style = "Bold"
+
+[font.bold_italic]
+family = "hack"
+style = "Bold Italic"
+
+[font.italic]
+family = "hack"
+style = "Italic"
+
+[font.normal]
+family = "hack"
+style = "Regular"
+
+[terminal]
+
+[terminal.shell]
+program = "/usr/bin/fish"
+args = ["--login"]
+
+[colors.primary]
+background = '#000000'
+foreground = '#d8dee9'
