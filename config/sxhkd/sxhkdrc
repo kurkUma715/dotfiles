@@ -1,5 +1,5 @@
 # Main
-super + Escape 
+super + Escape
     bspc wm -r
 
 super + r
@@ -56,11 +56,32 @@ super + shift + m
     bspc node -t tiled
 
 # Changing Windows 
-alt + Tab
-    bspc node -f next.local
+super + h
+    bspc node -f west
 
-alt + shift + Tab
-    bspc node -f prev.local
+super + j
+    bspc node -f south
+
+super + k
+    bspc node -f north
+
+super + l
+    bspc node -f east
+
+  # Move windows
+# Move floating windows
+super + alt + h
+    bspc node -v -20 0
+
+super + alt + j
+    bspc node -v 0 20
+
+super + alt + k
+    bspc node -v 0 -20
+
+super + alt + l
+    bspc node -v 20 0
+
 
 
 super + {1-9,0}
@@ -68,19 +89,6 @@ super + {1-9,0}
 
 super + shift + {1-9,0}
     bspc node -d ^{1-9,10}
-
-# Separate windows
-super + h
-    bspc node -p west
-
-super + j
-    bspc node -p south
-
-super + k
-    bspc node -p north
-
-super + l
-    bspc node -p east
 
 super + shift + {h,j,k,l}
     bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}

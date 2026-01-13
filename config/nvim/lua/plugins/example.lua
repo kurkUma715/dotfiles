@@ -48,7 +48,7 @@ return {
         pyright = {},
         tsserver = {},
         clangd = {
-          cmd = { "clangd" },
+          cmd = {"clangd", "--compile-commands-dir=build" },
         },
         omnisharp = {
           cmd = { "/usr/bin/omnisharp" },
