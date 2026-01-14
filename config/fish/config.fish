@@ -29,6 +29,7 @@ if status is-interactive
         end
 
         # Завершающий символ
-        echo -n -s $normal $magenta $git_info "> "
+        echo -n -s $normal $magenta $git_info "❯"
+
     end
 end

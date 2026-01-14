@@ -1,3 +1,7 @@
+[cursor]
+style = { shape = "Underline", blinking = "Always" }
+blink_interval = 750
+
 [font]
 size = 15.0
 
