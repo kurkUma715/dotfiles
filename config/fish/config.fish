@@ -1,35 +1,42 @@
-set -U fish_greeting
+# ~/.config/fish/config.fish
+# Отключаем приветственное сообщение
+set -U fish_greeting ""
 
 if status is-interactive
-    # Устанавливаем функцию промпта
     function fish_prompt
         # Цвета
-        set normal (set_color normal)
-        set cyan (set_color cyan)
-        set red (set_color red)
-        set green (set_color green)
-        set yellow (set_color yellow)
-        set magenta (set_color magenta)
-
-        # Часть с путем
-        echo -n -s $cyan (prompt_pwd) " "
-
-        # Часть с пользователем (только для root)
+        set -l normal (set_color normal)
+        set -l green (set_color green)
+        set -l white (set_color white)
+        set -l red (set_color red)
+        set -l yellow (set_color yellow)
+        
+        # 1. ЗЕЛЁНЫЙ ПУТЬ
+        echo -n -s $green (prompt_pwd) " "
+        
+        # 2. СИМВОЛ ПРИВИЛЕГИЙ (белый $ / красный #)
         if test (id -u) -eq 0
+            # ROOT - красный #
             echo -n -s $red "#"
+        else
+            # обычный пользователь - белый $
+            echo -n -s $white "\$"
         end
-
-        # Часть с git
-        set git_info ""
+        
+        # 3. БЕЛАЯ СТРОКА ВВОДА
+        echo -n -s $normal " "
+    end
+    
+    # Опционально: правая часть промпта для Git информации
+    function fish_right_prompt
+        # Добавляем информацию о Git только если есть
         if git rev-parse --is-inside-work-tree >/dev/null 2>&1
-            set git_branch (git branch --show-current 2>/dev/null)
+            set -l git_branch (git branch --show-current 2>/dev/null)
             if test -n "$git_branch"
-                set git_info "($git_branch)"
+                set -l yellow (set_color yellow)
+                set -l normal (set_color normal)
+                echo -n -s $yellow "(" $git_branch ")" $normal
             end
         end
-
-        # Завершающий символ
-        echo -n -s $normal $magenta $git_info "❯"
-
     end
 end
