@@ -32,5 +32,6 @@ bspc rule -a OpenGL state=floating
 ~/.config/scripts/screenlayout.sh &
 ~/.config/polybar/launch.sh &
 sxhkd &
+picom &
 
 setxkbmap -option grp:alt_shift_toggle us,ru &
