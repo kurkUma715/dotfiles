@@ -24,19 +24,7 @@ super + Return
     alacritty
 
 super + shift + w
-    chromium
-
-super + shift + f 
     firefox
-
-super + shift + d
-    discord
-
-super + shift + u
-    unityhub
-
-super + shift + c
-    code
 
 super + shift + e
     alacritty -e ranger
