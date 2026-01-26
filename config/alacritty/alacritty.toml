@@ -3,7 +3,7 @@ style = { shape = "Underline", blinking = "Always" }
 blink_interval = 750
 
 [font]
-size = 15.0
+size = 10.0
 
 [font.bold]
 family = "hack"
@@ -28,5 +28,5 @@ program = "/usr/bin/fish"
 args = ["--login"]
 
 [colors.primary]
-background = '#151520'
-foreground = '#d8dee9'
+background = '#232326'
+foreground = '#ffffff'

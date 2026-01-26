@@ -49,7 +49,7 @@ require("nvim-treesitter").setup({
 })
 
 -- ===== AUTOPAIRS =====
-require("nvim-autopairs").setup({ check_ts = true })
+--require("nvim-autopairs").setup({ check_ts = true })
 
 -- ===== LSP =====
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -106,19 +106,15 @@ vim.o.relativenumber = false
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
-vim.o.cursorline = true
-vim.o.termguicolors = true
-vim.o.syntax = "enable"
+vim.o.cursorline = false 
+vim.o.termguicolors = false 
+vim.o.syntax = "off"
 vim.opt.clipboard = "unnamedplus"
 vim.o.hlsearch = true
 vim.o.incsearch = true
 vim.o.showmatch = true
 vim.o.matchtime = 2
 vim.cmd("filetype plugin indent on")
-vim.o.showcmd = false
-vim.o.ruler = false
-vim.o.laststatus = 0
-vim.o.showmode = true
 
 -- ===== KEYMAPS =====
 local opts = { noremap = true, silent = true }
