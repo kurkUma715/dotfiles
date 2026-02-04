@@ -20,8 +20,8 @@ style = "Regular"
 [terminal]
 
 [terminal.shell]
-program = "/usr/bin/fish"
-args = ["--login"]
+program = "/usr/bin/zsh"
+#args = ["--login"]
 
 [colors.primary]
 background = '#232326'

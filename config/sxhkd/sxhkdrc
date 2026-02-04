@@ -1,4 +1,7 @@
 # Main
+super + shift + Escape
+    pkill x
+
 super + Escape
     bspc wm -r
 

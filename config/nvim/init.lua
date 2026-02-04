@@ -5,6 +5,9 @@ require("packer").startup(function(use)
 	use("nvim-tree/nvim-web-devicons")
 	use("navarasu/onedark.nvim")
 	use("windwp/nvim-autopairs")
+  use("hrsh7th/nvim-cmp")
+  use("hrsh7th/cmp-buffer")
+  use("hrsh7th/cmp-path")
 
 	if packer_bootstrap then
 		require("packer").sync()
@@ -43,7 +46,28 @@ require("nvim-tree").setup({
 	},
 })
 
+local cmp = require("cmp")
+
+cmp.setup({
+	completion = {
+		autocomplete = { cmp.TriggerEvent.TextChanged },
+	},
+	snippet = {
+		expand = function() end, 
+	},
+	mapping = {
+		["<C-n>"] = cmp.mapping.select_next_item(),
+		["<C-p>"] = cmp.mapping.select_prev_item(),
+    ["<Tab>"] = cmp.mapping.confirm({ select = true }),
+	},
+	sources = {
+		{ name = "buffer" },
+		{ name = "path" },   
+	},
+})
+
 -- ===== OPTIONS =====
+vim.o.mouse = ""
 vim.g.mapleader = " "
 vim.o.number = true
 vim.o.relativenumber = true
