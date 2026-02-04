@@ -24,7 +24,7 @@ super + period
 
 # Apps hotkeys
 super + Return
-    alacritty
+    st -f hack -e "zsh"
 
 super + shift + w
     firefox
