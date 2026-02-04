@@ -14,6 +14,8 @@ install_custom_packages() {
   make install
   wrapperctl install -s -si -a pacman brumba
   cd ..
+
+  brumba -U ./pkgs/st/st-0.9.3-1-x86_64.pkg.tar.zst
 }
 
 echo "COPYING CONFIGS..."
