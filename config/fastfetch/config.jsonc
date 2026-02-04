@@ -1,0 +1,35 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+  "logo": {
+    "type": "data-raw",
+    "source": "\u001b[35m\n   (\\ /)\n   ( . .)\n   c(*)(*)\u001b[0m"
+  },
+  "display": {
+    "size": {
+      "binaryPrefix": "iec",
+      "maxPrefix": "MB"
+    }
+  },
+  "modules": [
+    {
+      "type": "title"
+    },
+    {
+      "type": "os"
+    },
+    {
+      "type": "uptime"
+    },
+    {
+      "type": "packages",
+      "key": "Packages",
+      "format": "{pacman}"
+    },
+    {
+      "type": "memory",
+      "key": "Memory",
+      "format": "{used} / {total}"
+    },
+    "battery"
+  ]
+}
